@@ -1,12 +1,12 @@
 package model
 
 import (
-	"encoding/json"
 	"fmt"
 	"html/template"
 	"io/ioutil"
 	"reflect"
 
+	jsoniter "github.com/json-iterator/go"
 	"gopkg.in/yaml.v2"
 )
 
@@ -202,7 +202,7 @@ func readSlice(cKv chan string, exit chan bool, i int, ident int, src []interfac
 }
 
 func Json(v interface{}) template.HTML {
-	strB, err := json.Marshal(v)
+	strB, err := jsoniter.Marshal(v)
 	if err != nil {
 		return template.HTML(err.Error())
 	}
