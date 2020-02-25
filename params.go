@@ -2,7 +2,6 @@ package model
 
 import (
 	"fmt"
-	"html/template"
 	"io/ioutil"
 	"reflect"
 
@@ -201,10 +200,10 @@ func readSlice(cKv chan string, exit chan bool, i int, ident int, src []interfac
 	}
 }
 
-func Json(v interface{}) template.HTML {
+func Json(v interface{}) string {
 	strB, err := jsoniter.Marshal(v)
 	if err != nil {
-		return template.HTML(err.Error())
+		return err.Error()
 	}
-	return template.HTML(strB)
+	return string(strB)
 }
