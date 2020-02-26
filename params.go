@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"reflect"
-	"text/template"
 
 	jsoniter "github.com/json-iterator/go"
 	"gopkg.in/yaml.v2"
@@ -206,5 +205,5 @@ func Json(v interface{}) string {
 	if err != nil {
 		return err.Error()
 	}
-	return template.JSEscapeString(string(strB))
+	return string(strB)
 }
